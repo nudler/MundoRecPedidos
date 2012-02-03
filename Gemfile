@@ -13,6 +13,7 @@ gem 'nifty-generators', '>= 0.4.0'
 gem "rails-boilerplate"
 gem 'paperclip'
 gem 'cocaine'
+gem 'heroku'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
