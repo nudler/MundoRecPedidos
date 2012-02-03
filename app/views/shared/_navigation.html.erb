@@ -1,0 +1,30 @@
+<div class="header">
+    <img src="../images/logoMR.png" alt="Mundo Rec:::souvenirs-regalos" width="247" height="97" border="0" class="logo" />
+    <div class="menuhoriz">
+    <ul>
+        <% if user_signed_in? %>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>
+        </li>
+        <% else %>
+        <!--  <li>
+        <%= link_to('Login', new_user_session_path)  %>
+        </li> -->
+        <% end %>
+        <% if user_signed_in? %>
+            <li>
+              <% user = User.find(current_user.id)
+                 if user.isadmin%>
+                  <%= user.name %> - Admin
+                 <% end %>
+            </li>
+        <% end %>
+    </ul>
+    </div>
+
+</div>
+
+
+
+
+

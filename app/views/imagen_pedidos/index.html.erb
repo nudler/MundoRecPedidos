@@ -1,0 +1,30 @@
+<div class="titles">&nbsp;&nbsp;Imagenes subidas</div>  <br>
+<div class="imgContainer">
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+<% if @imagen_pedidos.empty? %>
+      <tr>
+        <td colspan="2" style="text-align: center; font-style: italic;">No hay imagenes subidas</td>
+      </tr>
+
+  <% else %>
+<% @imagen_pedidos.each do |imagen_pedido| %>
+  <tr>
+    <td><%= image_tag imagen_pedido.photo.url , :size => "100x100"%></td>
+    <td><%= link_to 'Eliminar', imagen_pedido, confirm: 'Esta seguro?', method: :delete %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+
+<br />
+<% if @imagen_pedidos.count < 3 %>
+Puede subir <%= 3-@imagen_pedidos.count %> imagenes mas.
+    <%= link_to ' - Subir otra imagen', new_imagen_pedido_path %>
+<% else %>
+    Ha llegado al limite de imagenes permitidas.
+<% end %>
+</div>

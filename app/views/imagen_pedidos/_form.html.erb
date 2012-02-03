@@ -1,0 +1,21 @@
+<%= form_for(@imagen_pedido, :html => { :multipart => true }) do |f| %>
+  <% if @imagen_pedido.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@imagen_pedido.errors.count, "error") %> prohibited this imagen_pedido from being saved:</h2>
+
+      <ul>
+      <% @imagen_pedido.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="titles">&nbsp;&nbsp;SELECCIONE EL ARCHIVO</div>  <br>
+  <p>
+    <%= f.label 'Archivo:' %>
+    <%= f.file_field :photo %>
+    <%= f.submit 'Subir archivo' %>
+  </p>
+
+<% end %>

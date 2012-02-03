@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pedido:</b>
+  <%= @imagen_pedido.pedido_id %>
+</p>
+<p>
+  <b>Photo:</b>
+  <%= image_tag @imagen_pedido.photo.url, :size => "100x100" %>
+</p>
+
+
+<%= link_to 'Edit', edit_imagen_pedido_path(@imagen_pedido) %> |
+<%= link_to 'Back', imagen_pedidos_path %>

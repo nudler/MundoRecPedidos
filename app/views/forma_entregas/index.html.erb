@@ -1,0 +1,21 @@
+<h1>Listing forma_entregas</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @forma_entregas.each do |forma_entrega| %>
+  <tr>
+    <td><%= link_to 'Show', forma_entrega %></td>
+    <td><%= link_to 'Edit', edit_forma_entrega_path(forma_entrega) %></td>
+    <td><%= link_to 'Destroy', forma_entrega, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Forma entrega', new_forma_entrega_path %>

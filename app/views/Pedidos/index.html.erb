@@ -1,0 +1,39 @@
+<h1>Pedidos</h1>
+
+<div class="imgContainer">
+    <table style="width: 100%" border="0" >
+      <tr>
+
+        <th>Nro. Pedido</th>
+        <th>Nombre</th>
+        <th>Fecha Pedido</th>
+        <th>Status</th>
+
+        <th></th>
+        <th></th>
+      </tr>
+      <tr><td colspan="6"><hr></td></tr>
+    <% if @pedidos.empty? %>
+          <tr>
+            <td colspan="6" style="text-align: center;"><%= link_to 'Cargar nuevo
+            pedido',
+                                        new_pedido_path %></td>
+          </tr>
+
+    <% else
+     @pedidos.each do |p| %>
+      <tr>
+        <td align="center"><%= p.id %></td>
+        <td align="center"><%= p.user.name %></td>
+        <td align="center"><%= p.fechacarga %></td>
+        <td align="center"><%= p.descStatus(p.status) %></td>
+
+
+        <td><%= link_to 'Cargar el pedido', edit_pedido_path(p) %></td>
+        <td><%= link_to 'Cancelar pedido', p, confirm: 'Are you sure?', method: :delete %></td>
+      </tr>
+    <% end %>
+    <% end %>
+    </table>
+</div>
+

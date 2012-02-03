@@ -1,0 +1,2 @@
+module EventoDetallesHelper
+end

@@ -1,0 +1,207 @@
+body {background:url(../images/bg.jpg) repeat; font-family:Arial, Tahoma, Verdana, "Times New Roman", Times, serif; font-size:12px;}
+#wrap {width:882px; margin:auto;}
+.clear {clear:both;}
+a {color:#000000;}
+a:visited,a:active {color:#666666;}
+.hide {display:none;}
+
+
+
+#mainContainer {
+    width: 100%;
+    height: 80%;
+    background-color: #87cefa;
+}
+
+ul.hmenu {
+  list-style: none;	
+  margin: 0 0 2em;
+  padding: 0;
+}
+ul.hmenu li {
+  display: inline;  
+}
+#flash_notice, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+.titles {
+  background-color: #deb887;
+  border: solid 1px black;
+  font-weight: bold;
+}
+
+.titlesMain {
+  /*background-color: #2e8b57;*/
+  background-color: #cccccc;
+  border: solid 1px black;
+  font-weight: bolder;
+  text-align: left;
+  color: black;
+}
+
+.titlesMain titIzq{
+    float: left;
+}
+
+.titlesMain titDer{
+    float: right;
+}
+
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+#login-box {
+	width:333px;
+	height: 352px;
+	padding: 78px 76px 0 116px;
+	color: #ebebeb;
+	font: 12px Arial, Helvetica, sans-serif;
+	background: url(login-box-backg.png) no-repeat left top;
+
+}
+
+
+.center {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   margin-left: -166px;
+   margin-top: -150px;
+}
+
+
+#login-box img {
+	border:none;
+}
+
+#login-box h2 {
+	padding:0;
+	margin:0;
+	color: #ebebeb;
+	font: bold 44px "Calibri", Arial;
+}
+
+
+#login-box-name {
+	float: left;
+	display:inline;
+	width:80px;
+	text-align: right;
+	padding: 14px 10px 0 0;
+	margin:0 0 7px 0;
+}
+
+#login-box-field {
+	float: left;
+	display:inline;
+	width:230px;
+	margin:0;
+	margin:0 0 7px 0;
+}
+
+
+.form-login  {
+	width: 205px;
+	padding: 10px 4px 6px 3px;
+	border: 1px solid #0d2c52;
+	background-color:#1e4f8a;
+	font-size: 16px;
+	color: #ebebeb;
+}
+
+
+.login-box-options  {
+	clear:both;
+	padding-left:87px;
+	font-size: 11px;
+}
+
+.login-box-options a {
+	color: #ebebeb;
+	font-size: 11px;
+}
+
+
+.header{
+    width:100%;
+    margin-bottom: 70px;
+    height:30px;
+    background:#1E1B16 url(../images/nav_bg.gif) repeat-x top;
+  }
+
+.mainTitle{
+    position: absolute;
+    top:38px;
+    width:98.6%;
+    margin-bottom: 20px;
+    height:50px;
+    background:#1E1B16 url(../images/nav_bg_hover.gif) repeat-x top;
+    z-index: -3;
+  }
+
+.mainTitle h1{
+    text-align: center;
+    padding-left: 120px;
+  }
+
+.menuhoriz
+{
+    float: right;
+    padding-right: 20px;
+    display:block;
+    text-decoration:none;
+    display: inline;
+    color: white;
+}
+
+.menuhoriz a
+{
+    color: white;
+    text-decoration:none;
+}
+
+
+.menuhoriz ul li
+{
+    list-style-type: none;
+    display: inline;
+}
+
+.menuhoriz ul li a
+{
+    padding: 0px 12px 0px 12px;
+}
+
+.imgContainer
+{
+    margin-left: 50px;
+    background-color: #fafad2;
+    width: 80%;
+    height: 80%;
+    border: 1px solid black;
+}
+
+#logo{
+	display:block;
+	width:247px;
+	height:97px;
+    margin-left: 120px;
+}
+
+.fberrorbox
+{
+    background-color: #ffebe8;
+    border: 1px solid #dd3c10;
+    color: #333333;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}

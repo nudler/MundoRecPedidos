@@ -1,0 +1,17 @@
+<div style="padding: 0px 0 0 250px;">
+  <div id="login-box">
+        <h2>Mundo Rec</h2>
+
+  <div style="padding-top: 40px; margin-left: -60px; text-align: center;">
+  <% if @user.pedidos.find(:all,:conditions=> {:status => [0]}).empty? %>
+    <p>Bienvenido  <%=@user.name %>, presione <%=link_to 'aqui', new_pedido_path %>
+        para comenzar con la carga de su pedido.
+  <% else %>
+    <p>Bienvenido nuevamente  <%=@user.name %>. Presione
+      <%=link_to 'aqui', @user.pedidos.find(:all,:conditions=> {:status => [0]})[0] %>
+        para continuar con la carga de su pedido.
+  <% end %>
+  </p>
+  </div>
+</div>
+</div>

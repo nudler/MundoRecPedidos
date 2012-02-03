@@ -1,0 +1,25 @@
+<h1>Listing sitio_entregas</h1>
+
+<table>
+  <tr>
+    <th>Descripcion</th>
+    <th>Forma entrega</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sitio_entregas.each do |sitio_entrega| %>
+  <tr>
+    <td><%= sitio_entrega.descripcion %></td>
+    <td><%= sitio_entrega.forma_entrega_id %></td>
+    <td><%= link_to 'Show', sitio_entrega %></td>
+    <td><%= link_to 'Edit', edit_sitio_entrega_path(sitio_entrega) %></td>
+    <td><%= link_to 'Destroy', sitio_entrega, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sitio entrega', new_sitio_entrega_path %>

@@ -1,0 +1,131 @@
+<%= form_for(@pedido) do |f| %>
+  <% if @pedido.errors.any? %>
+
+    <div class="fberrorbox">
+      <h2>Se han encontrado <%= pluralize(@pedido.errors.count, "error") %> en el formulario:</h2>
+      <ul>
+      <% @pedido.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="titlesMain">
+      <div><h1>&nbsp;Pedido Nº:<%= @pedido.id %></h1></div>
+      <h1><div>&nbsp;Fecha de solicitud de pedido: <%= @pedido.fechacarga %>&nbsp;&nbsp;</div></h1>
+    </div>
+    <br>
+
+    <div class="titles">&nbsp;&nbsp;DETALLES DEL EVENTO</div>  <br>
+    <table>
+        <tr>
+            <td>
+                <label for="pedido_evento_id">Evento:</label>
+            </td>
+            <td>
+              <%= f.collection_select :evento_id, Evento.find(:all), :id, :descripcion, :prompt => "Seleccione un evento" %>
+            </td>
+        </tr>
+        <tr>
+            <td>Fecha del Evento:</td>
+            <td><%= f.text_field :fechaevento %></td>
+        </tr>
+    </table>
+
+        <div class="titles">&nbsp;&nbsp;DATOS DEL HOMENAJEADO</div>  <br>
+    <table>
+        <tr>
+            <td>Nombre:</td>
+            <td><%= f.text_field :nombre %></td>
+        </tr>
+        <tr id='divCumple2' style="display: none;">
+            <td>Fecha del cumpleanos:</td>
+            <td><%= f.text_field :fechacumple %></td>
+        </tr>
+        <tr id='divCumple' style="display: none;">
+            <td>Anos a cumplir:</td>
+            <td><%= f.text_field :aniosacumplir %></td>
+        </tr>
+        <tr>
+            <td>Tematica:</td>
+            <td><%= f.text_field :tematica %></td>
+        </tr>
+        <tr>
+            <td>Colores de preferencia:</td>
+            <td><%= f.text_field :colores %></td>
+        </tr>
+    </table>
+
+    <div class="titles">&nbsp;&nbsp;DATOS DE CONTACTO</div>  <br>
+        <table>
+            <tr>
+                <td>Nombre:</td>
+                <td><%= f.text_field :nombrecontacto %></td>
+            </tr>
+            <tr>
+              <td>Telefono particular:</td>
+              <td><%= f.text_field :telefonoparticular %></td>
+            </tr>
+            <tr>
+              <td>Telefono alternativo:</td>
+              <td><%= f.text_field :telalternativo %></td>
+            </tr>
+            <tr>
+              <td>Email:</td>
+              <td><%= f.text_field :email1, :disabled => true %></td>
+            </tr>
+            <tr>
+              <td>Email 2:</td>
+              <td><%= f.text_field :email2 %></td>
+            </tr>
+        </table>
+
+    <div class="titles">&nbsp;&nbsp;ENTREGA DEL PEDIDO</div>
+    <table>
+      <tr style="vertical-align: top;">
+        <td>
+            <label for="forma_entrega_id">Evento:</label>
+        </td>
+        <td>
+            <%= f.collection_select :forma_entrega_id, FormaEntrega.find(:all), :id, :descripcion, :prompt => "Seleccione una forma de entrega" %>
+        </td>
+        <td>
+            <div style="display: none;margin-left: 30px;" id="divSitio">
+                <%= f.collection_select :sitio_entrega_id, SitioEntrega.find(:all), :id, :descripcion , :prompt => "Seleccione un lugar de retiro" %>
+            </div>
+            <div style="display: none; text-align: left; margin-left: 30px;" id="divDatosEntrega">
+                Domicilio: <%= f.text_field :domicilio, :size =>50 %>
+                Entre Calles: <%= f.text_field :entrecalles, :size =>40 %> <br>
+                Barrio: <%= f.text_field :barrio %>
+                Codigo Postal: <%= f.text_field :codpos %> <br>
+                Localidad: <%= f.text_field :localidad %>
+                Provincia: <%= f.text_field :provincia %> <br>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fecha Entrega:
+        </td>
+        <td>
+          <%= f.text_field :fechaentrega %>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Horario Entrega:
+        </td>
+        <td>
+          <%= f.text_field :horarioentrega %>
+        </td>
+      </tr>
+    </table>
+    <div class="actions" style="float: right;">
+        <%= f.submit 'Grabar Pedido y continuar' %>
+    </div>
+
+    <div style="width: 100%; margin-top: 30px;"><hr></div>
+    <div style="width: 100%; margin-top: 5px; text-align: center;">MundoRec::All rights reserved</div>
+
+<% end%>

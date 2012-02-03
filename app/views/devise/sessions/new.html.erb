@@ -1,0 +1,41 @@
+<div style="padding: 0px 0 0 250px;">
+    <div id="login-box">
+        <h2>Mundo Rec</h2>
+        Ingrese los datos que le fueron suministrados.
+        <div style="padding-top: 40px">
+            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+              <table>
+                <tr>
+                  <td>
+                    <%= f.label :email, :class => 'login-box-name' %>
+                  </td>
+                  <td>
+                    <%= f.email_field :email, :class => 'login-box-field' %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= f.label :password, :class => 'login-box-name' %>
+                  </td>
+                  <td>
+                    <%= f.password_field :password, :class => 'login-box-field' %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                  </td>
+                  <td>
+                    <% if devise_mapping.rememberable? -%>
+                      <div class="login-box-options"><%= f.check_box :remember_me %><%= f.label :remember_me %></div>
+                    <% end -%>
+                  </td>
+                </tr>
+              </table>
+
+
+              <div><%= f.submit "Sign in" %></div>
+            <% end %>
+        </div>
+
+    </div>
+</div>
