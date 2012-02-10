@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120201163543) do
+ActiveRecord::Schema.define(:version => 20120209133041) do
+
+  create_table "categories", :force => true do |t|
+    t.text     "descripcion"
+    t.integer  "categoria_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "evento_detalles", :force => true do |t|
     t.text     "Descripcion"
@@ -21,8 +28,9 @@ ActiveRecord::Schema.define(:version => 20120201163543) do
 
   create_table "eventos", :force => true do |t|
     t.text     "descripcion"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.integer   "iscumple",                                     :null => false
   end
 
   create_table "forma_entregas", :force => true do |t|
@@ -39,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20120201163543) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "pedidodetalles", :force => true do |t|
+    t.integer  "pedido_id"
+    t.integer  "producto_id"
+    t.integer  "cantidad"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "pedidos", :force => true do |t|
@@ -72,6 +88,13 @@ ActiveRecord::Schema.define(:version => 20120201163543) do
 
   add_index "pedidos", ["user_id"], :name => "user_id"
 
+  create_table "productos", :force => true do |t|
+    t.text     "descripcion"
+    t.integer  "categoria_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "sitio_entregas", :force => true do |t|
     t.integer "forma_entrega_id"
     t.string  "descripcion",      :limit => 150
@@ -81,8 +104,8 @@ ActiveRecord::Schema.define(:version => 20120201163543) do
   add_index "sitio_entregas", ["forma_entrega_id"], :name => "forma_entrega_id"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",    :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -91,9 +114,10 @@ ActiveRecord::Schema.define(:version => 20120201163543) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                            :null => false
-    t.datetime "updated_at",                                            :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
     t.string   "name"
+    t.boolean  "isadmin",                               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

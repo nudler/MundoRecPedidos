@@ -1,0 +1,33 @@
+<div class="box_shadow">
+  <%= render :partial => 'form' %>
+</div>
+
+<div class="box_list">
+<table style="width: 100%; text-align: center;">
+  <tr>
+    <th>Producto</th>
+    <th>Cantidad</th>
+    <th colspan="2">Operaciones</th>
+  </tr>
+  <tr>
+    <th colspan="4"><hr></th>
+  </tr>
+<% if @pedidodetalles.empty? %>
+      <tr>
+        <th colspan="4">No hay productos ingresados</th>
+      </tr>
+<% else %>
+<% @pedidodetalles.each do |pedidodetalle| %>
+  <tr>
+    <td><%= pedidodetalle.producto.descripcion %></td>
+    <td><%= pedidodetalle.cantidad %></td>
+    <td colspan="2"><%= link_to 'Eliminar',
+                                                      pedidodetalle,
+                                confirm: 'Esta seguro?',
+                    method: :delete %></td>
+  </tr>
+<% end %>
+<% end %>
+</table>
+</div>
+<br />

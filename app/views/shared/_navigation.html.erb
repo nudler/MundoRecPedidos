@@ -14,8 +14,8 @@
         <% if user_signed_in? %>
             <li>
               <% user = User.find(current_user.id)
-                 if user.isadmin%>
-                  <%= user.name %> - Admin
+                 if user.isadmin == 1%>
+                   <%= user.name %> - Admin
                  <% end %>
             </li>
         <% end %>

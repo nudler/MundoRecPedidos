@@ -1,0 +1,27 @@
+<h1>Listing productos</h1>
+<div class="imgContainer">
+<table style="width: 100%">
+  <tr>
+    <th>Descripcion</th>
+    <th>Categoria</th>
+    <th colspan="3" style="text-align: center;">Action</th>
+  </tr>
+<tr>
+  <td colspan="5"><hr></td>
+
+</tr>
+<% @productos.each do |producto| %>
+  <tr>
+    <td><%= producto.descripcion %></td>
+    <td><%= producto.category.descripcion %></td>
+    <td><%= link_to 'Show', producto %></td>
+    <td><%= link_to 'Edit', edit_producto_path(producto) %></td>
+    <td><%= link_to 'Destroy', producto, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Producto', new_producto_path %>
+</div>

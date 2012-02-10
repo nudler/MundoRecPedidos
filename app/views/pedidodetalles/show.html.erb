@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pedido:</b>
+  <%= @pedidodetalle.pedido_id %>
+</p>
+
+<p>
+  <b>Producto:</b>
+  <%= @pedidodetalle.producto_id %>
+</p>
+
+<p>
+  <b>Cantidad:</b>
+  <%= @pedidodetalle.cantidad %>
+</p>
+
+
+<%= link_to 'Edit', edit_pedidodetalle_path(@pedidodetalle) %> |
+<%= link_to 'Back', pedidodetalles_path %>

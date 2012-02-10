@@ -5,6 +5,8 @@
 
     <th>Id</th>
     <th>Descripcion</th>
+    <th>Es cumple?</th>
+
     <th></th>
     <th></th>
     <th></th>
@@ -14,6 +16,11 @@
   <tr>
     <td><%= e.id %></td>
     <td><%= e.descripcion %></td>
+    <% if e.iscumple == 1 %>
+        <td>SI</td>
+    <% else %>
+        <td>NO</td>
+    <% end %>
     <td><%= link_to 'Show', e %></td>
     <td><%= link_to 'Edit', edit_evento_path(e) %></td>
     <td><%= link_to 'Destroy', e, confirm: 'Are you sure?', method: :delete %></td>

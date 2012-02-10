@@ -1,0 +1,24 @@
+<%= form_for(@pedidodetalle) do |f| %>
+  <% if @pedidodetalle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pedidodetalle.errors.count, "error") %> prohibited this pedidodetalle from being saved:</h2>
+
+      <ul>
+      <% @pedidodetalle.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" style="text-align: center;">
+    <%= f.label :producto_id %>
+    <%= f.collection_select :producto_id, Producto.find(:all), :id, :descripcion,
+                            :prompt => "Seleccione un Producto" %>
+
+
+    <%= f.label :cantidad %>
+    <%= f.number_field :cantidad %>
+    <%= f.submit 'Agregar Producto'%>
+  </div>
+<% end %>

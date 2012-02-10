@@ -1,0 +1,38 @@
+<div class="rounded-corners">&nbsp;&nbsp;LISTADO DE PEDIDOS POR FECHA DE ENTREGA</div>  <br>
+<div class="imgContainer">
+    <table style="width: 100%" border="0" >
+      <tr>
+
+        <th>Nro. Pedido</th>
+        <th>Nombre</th>
+        <th>Fecha Pedido</th>
+        <th>Fecha Entrega</th>
+        <th>Status</th>
+
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr><td colspan="8"><hr></td></tr>
+    <% if @pedidos.empty? %>
+          <tr>
+            <td colspan="8" style="text-align: center;">No hay pedidos</td>
+          </tr>
+    <% else
+     @pedidos.each do |p| %>
+      <tr>
+        <td align="center"><%= p.id %></td>
+        <td align="center"><%= p.user.name %></td>
+        <td align="center"><%= p.fechacarga %></td>
+        <td align="center"><%= p.fechaentrega %></td>
+        <td align="center"> <%= p.descStatus(p.status) %></td>
+        <td><%= link_to 'Revisar pedido', edit_pedido_path(p) %></td>
+        <td><%= link_to 'Cancelar pedido', p, confirm: 'Esta seguro?',
+                        method: :delete %></td>
+        <td><%= link_to 'Mover al siguiente estado', p, confirm: 'Esta seguro?',
+                        method: :post %></td>
+      </tr>
+    <% end %>
+    <% end %>
+    </table>
+</div>

@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Descripcion</th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +10,7 @@
 
 <% @forma_entregas.each do |forma_entrega| %>
   <tr>
+    <td><%= forma_entrega.descripcion %></td>
     <td><%= link_to 'Show', forma_entrega %></td>
     <td><%= link_to 'Edit', edit_forma_entrega_path(forma_entrega) %></td>
     <td><%= link_to 'Destroy', forma_entrega, confirm: 'Are you sure?', method: :delete %></td>

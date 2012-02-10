@@ -1,13 +1,18 @@
 class ImagenPedidosController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /imagen_pedidos
   # GET /imagen_pedidos.json
   def index
-    # = ImagenPedido.all
     @pedidos = Pedido.find(:all,:conditions=> {:status => [0], :user_id => current_user.id})
-    @imagen_pedidos = @pedidos[0].imagen_pedidos
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @imagen_pedidos }
+    if @pedidos.count > 0
+      @imagen_pedidos = @pedidos[0].imagen_pedidos
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @imagen_pedidos }
+      end
+    else
+      redirect_to pedidos_path, notice: 'No tiene pedidos pendientes'
     end
   end
 
@@ -43,17 +48,25 @@ class ImagenPedidosController < ApplicationController
   # POST /imagen_pedidos
   # POST /imagen_pedidos.json
   def create
-    @imagen_pedido = ImagenPedido.new(params[:imagen_pedido])
     @pedidos = Pedido.find(:all,:conditions=> {:status => [0], :user_id => current_user.id})
-    @imagen_pedido.pedido_id = @pedidos[0].id
-    respond_to do |format|
-      if @imagen_pedido.save
-        format.html { redirect_to imagen_pedidos_path, notice: 'La imagen fue subida satisfactoriamente.' }
-        format.json { render json: @imagen_pedido, status: :created, location: @imagen_pedido }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @imagen_pedido.errors, status: :unprocessable_entity }
+    if @pedidos[0].imagen_pedidos.count < 3
+      @imagen_pedido = ImagenPedido.new(params[:imagen_pedido])
+      @imagen_pedido.pedido_id = @pedidos[0].id
+      respond_to do |format|
+        if @imagen_pedido.save
+          format.html { redirect_to imagen_pedidos_path, notice: 'La imagen fue subida satisfactoriamente.' }
+          format.json { render json: @imagen_pedido, status: :created, location: @imagen_pedido }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @imagen_pedido.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      #moviendo el estado a 1: Listo para verificacion
+      @pedidos[0].status = 1
+      @pedidos[0].save
+      redirect_to pedidos_path, notice: 'El pedido ha sido enviado
+satisfactoriamente.'
     end
   end
 

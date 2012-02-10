@@ -1,0 +1,31 @@
+<%= form_for(@producto) do |f| %>
+  <% if @producto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@producto.errors.count, "error") %> prohibited this producto from being saved:</h2>
+
+      <ul>
+      <% @producto.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.collection_select :category_id, Category.find(:all),
+                            :id,
+                            :descripcion,
+                            :include_blank => false %>
+
+    <div class="field">
+      <%= f.label 'Producto' %>
+      <%= f.text_field :descripcion %>
+    </div>
+
+    <%= f.submit %>
+  </div>
+<% end %>

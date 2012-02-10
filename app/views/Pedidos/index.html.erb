@@ -26,10 +26,21 @@
         <td align="center"><%= p.id %></td>
         <td align="center"><%= p.user.name %></td>
         <td align="center"><%= p.fechacarga %></td>
-        <td align="center"><%= p.descStatus(p.status) %></td>
+
+        <td align="center"> <%= p.descStatus(p.status) %></td>
 
 
-        <td><%= link_to 'Cargar el pedido', edit_pedido_path(p) %></td>
+        <td><% if p.status ==0 %>
+            <%= link_to 'Cargar el pedido', edit_pedido_path(p) %></td>
+            <% else
+                  user = User.find(current_user.id)
+                  if user.isadmin == 1%>
+                      <%= link_to 'Revisar el pedido', edit_pedido_path(p) %>
+                  <% else %>
+                      Pedido cerrado
+                  <% end %>
+              <% end %>
+              </td>
         <td><%= link_to 'Cancelar pedido', p, confirm: 'Are you sure?', method: :delete %></td>
       </tr>
     <% end %>

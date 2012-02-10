@@ -25,6 +25,9 @@
 Puede subir <%= 3-@imagen_pedidos.count %> imagenes mas.
     <%= link_to ' - Subir otra imagen', new_imagen_pedido_path %>
 <% else %>
-    Ha llegado al limite de imagenes permitidas.
+      <%= form_for(:imagen_pedido) do |f| %>
+        Ha llegado al limite de imagenes permitidas.
+        <%= f.submit 'Finalizar pedido' %>
+    <% end  %>
 <% end %>
 </div>
